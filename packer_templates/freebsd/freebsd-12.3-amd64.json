@@ -185,7 +185,7 @@
     }
   ],
   "variables": {
-    "box_basename": "freebsd-11.4",
+    "box_basename": "freebsd-12.3",
     "build_directory": "../../builds",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
@@ -196,16 +196,16 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "install_path": "freebsd-11/installerconfig",
-    "iso_checksum": "d76c1ded99b2c1005b1ff94cc0c811fbcd8a2d04196432009ab5f203c2146914",
-    "iso_name": "FreeBSD-11.4-RELEASE-amd64-disc1.iso",
+    "iso_checksum": "5f0c10ff9af582c7fca90f65868702aa02e80f344c186f0bc75639a687d65641",
+    "iso_name": "FreeBSD-12.3-RELEASE-amd64-disc1.iso",
     "memory": "1024",
     "mirror": "https://download.freebsd.org/ftp",
-    "mirror_directory": "releases/amd64/amd64/ISO-IMAGES/11.4",
-    "name": "freebsd-11.4",
+    "mirror_directory": "releases/amd64/amd64/ISO-IMAGES/12.3",
+    "name": "freebsd-12.3",
     "no_proxy": "{{env `no_proxy`}}",
     "pkg_branch": "quarterly",
     "qemu_display": "none",
-    "template": "freebsd-11.4-amd64",
+    "template": "freebsd-12.3-amd64",
     "version": "TIMESTAMP"
   }
 }

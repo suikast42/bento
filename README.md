@@ -1,7 +1,5 @@
 # Bento
 
-[![Build status](https://badge.buildkite.com/2d56b8ca08562a7d17fd25920a2e02079c5e6f28cbc6d426ee.svg?branch=master)](https://buildkite.com/chef-oss/chef-bento-master-verify)
-
 Bento is a project that encapsulates [Packer](https://www.packer.io/) templates for building [Vagrant](https://www.vagrantup.com/) base boxes. A subset of templates are built and published to the [bento org](https://app.vagrantup.com/bento) on Vagrant Cloud. These published boxes serve as the default boxes for [kitchen-vagrant](https://github.com/test-kitchen/kitchen-vagrant/).
 
 ### Using Public Boxes
@@ -45,11 +43,11 @@ $ cd packer_templates/ubuntu
 $ packer build -only=virtualbox-iso ubuntu-18.04-amd64.json
 ```
 
-To build Debian 11.1 32bit boxes for all possible providers (simultaneously)
+To build Debian 11.2 32bit boxes for all possible providers (simultaneously)
 
 ```
 $ cd packer_templates/debian
-$ packer build debian-11.1-i386.json
+$ packer build debian-11.2-i386.json
 ```
 
 To build CentOS 7.7 boxes for all providers except VMware and Parallels
@@ -140,7 +138,7 @@ These basebox templates were converted from [veewee](https://github.com/jedi4eve
 - Author: Tom Duffield ([tom@chef.io](mailto:tom@chef.io))
 
 ```text
-Copyright 2012-2020, Chef Software, Inc. (<legal@chef.io>)
+Copyright 2012-2021, Chef Software, Inc. (<legal@chef.io>)
 Copyright 2011-2012, Tim Dysinger (<tim@dysinger.net>)
 
 Licensed under the Apache License, Version 2.0 (the "License");

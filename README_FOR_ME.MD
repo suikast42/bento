@@ -1,9 +1,9 @@
 # Build centos image
 1. cd packer_templates/centos
 2. For more vmware iso configs [see docu](https://www.packer.io/docs/builders/vmware/iso) 
-3. 
+Open powershell
 ```shell
- SET PACKER_CACHE_DIR=D:\VMIsos\centos_8_5
+ $env:PACKER_CACHE_DIR="$env:userprofile\VMImages\VMIsos\centos_8_5"
  packer build -only=vmware-iso -var "disk_size=16384"   centos-8.5-x86_64.json
 ```
 4. change to <project basedir>/build  and rename the box as amova-centos8-baseimg-<amova version>.<disk size>.vmwarevm

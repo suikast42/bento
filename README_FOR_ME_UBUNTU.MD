@@ -1,3 +1,7 @@
+# Links
+
+* [tekanaid.com](https://tekanaid.com/posts/hashicorp-packer-build-ubuntu20-04-vmware)
+* [google serach](https://www.google.com/search?q=pakcer+ubuntu+vmware+builder&rlz=1C1GCEB_enDE988DE988&oq=pakcer+ubuntu+vmware+builder&aqs=chrome..69i57j0l2.7311j0j7&sourceid=chrome&ie=UTF-8)
 # Build centos image
 1. cd packer_templates/ubuntu
 Open powershell

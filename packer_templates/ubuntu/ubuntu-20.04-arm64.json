@@ -48,6 +48,7 @@
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
             "expect_disconnect": true,
             "scripts": [
+                "{{template_dir}}/scripts/update_disk_size.sh",
                 "{{template_dir}}/scripts/update.sh",
                 "{{template_dir}}/../_common/motd.sh",
                 "{{template_dir}}/../_common/sshd.sh",

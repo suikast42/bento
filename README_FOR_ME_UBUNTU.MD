@@ -9,6 +9,7 @@
 Open powershell
 ```shell
  $env:PACKER_CACHE_DIR="$env:userprofile\VMImages\VMIsos\ubuntu"
+ $env:PACKER_LOG=1
  packer build -only=vmware-iso -var "disk_size=16384"  ubuntu-20.04-amd64.json
 ```
 

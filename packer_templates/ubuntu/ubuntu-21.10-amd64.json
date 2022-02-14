@@ -174,8 +174,8 @@
             "type": "qemu",
             "vm_name": "{{ user `template` }}",
             "qemuargs": [
-              [ "-m", "{{ user `memory` }}" ],
-              [ "-display", "{{ user `qemu_display` }}" ]
+                [ "-m", "{{ user `memory` }}" ],
+                [ "-display", "{{ user `qemu_display` }}" ]
             ]
         },
         {

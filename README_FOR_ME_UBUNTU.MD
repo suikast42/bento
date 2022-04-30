@@ -11,14 +11,14 @@ Open powershell
  $env:PACKER_CACHE_DIR="$env:userprofile\VMImages\VMIsos\ubuntu"
  $env:TMPDIR="$env:C:\IDE\golang\tmp"
  $env:PACKER_LOG=1
- packer build -only=vmware-iso -var "disk_size=16384"  ubuntu-20.04-amd64.json
+ packer build -only=vmware-iso -var "disk_size=16384"  ubuntu-22.04-amd64.json
 ```
 
-4. change to <project basedir>/build  and rename the box as amova-centos8-baseimg-<amova version>.<disk size>.vmwarevm
-   for example amova-ubuntu-baseimg-4.2.0.16.vmwarevm
+4. change to <project basedir>/build  and rename the box as amova-ubuntu-baseimg-<amova version>.<disk size>.vmwarevm
+   for example amova-ubuntu-baseimg-1.0.0.16.vmwarevm
 5. 
 ```shell
-openssl sha1  amova-ubuntu-baseimg-4.2.0.16.vmwarevm
+openssl sha1  amova-ubuntu-baseimg-1.0.0.16.vmwarevm
 ```
 6. Add the version and sha to metadata.json and upload it 
 

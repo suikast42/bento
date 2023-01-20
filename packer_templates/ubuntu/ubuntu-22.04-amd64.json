@@ -64,7 +64,7 @@
                 "{{.HTTPIP}}<wait>",
                 ":{{.HTTPPort}}/<wait>",
                 " ---",
-                "<enter><wait30>",
+                "<enter><wait>",
                 "initrd /casper/initrd<wait>",
                 "<enter><wait>",
                 "boot<enter><wait>"

@@ -187,7 +187,7 @@ variable "vmware_tools_upload_path" {
 }
 variable "vmware_version" {
   type    = number
-  default = 19
+  default = 15
 }
 variable "vmware_vmx_data" {
   type    = map(string)
@@ -224,13 +224,18 @@ variable "disk_size" {
   type    = number
   default = 65536
 }
+variable "disk_type_id" {
+  type    = number
+  default = 0
+}
+
 variable "floppy_files" {
   type    = list(string)
   default = null
 }
 variable "headless" {
   type        = bool
-  default     = true
+  default     = false
   description = "Start GUI window to interact with VM"
 }
 variable "http_directory" {

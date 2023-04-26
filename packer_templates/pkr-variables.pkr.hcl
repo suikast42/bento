@@ -49,11 +49,6 @@ variable "sources_enabled" {
 
 # Source block provider specific variables
 # hyperv-iso
-variable "boot_command_hyperv" {
-  type        = list(string)
-  default     = null
-  description = "Commands to pass to gui session to initiate automated install"
-}
 variable "hyperv_enable_dynamic_memory" {
   type    = bool
   default = null
@@ -104,6 +99,18 @@ variable "qemu_accelerator" {
   type    = string
   default = null
 }
+variable "qemu_binary" {
+  type    = string
+  default = null
+}
+variable "qemu_display" {
+  type    = string
+  default = "none"
+}
+variable "qemu_machine_type" {
+  type    = string
+  default = null
+}
 variable "qemuargs" {
   type    = list(list(string))
   default = null
@@ -151,8 +158,8 @@ variable "vboxmanage" {
       "{{.Name}}",
       "--audio",
       "none",
-      # "--nat-localhostreachable1",
-      # "on",
+      "--nat-localhostreachable1",
+      "on",
     ]
   ]
 }
@@ -161,16 +168,22 @@ variable "virtualbox_version_file" {
   default = ".vbox_version"
 }
 
-# virtualbox-ovg
+# virtualbox-ovf
 variable "vbox_source" {
   type    = string
   default = null
 }
 
 # vmware-iso
+variable "vmware_cdrom_adapter_type" {
+  type        = string
+  default     = "sata"
+  description = "CDROM adapter type.  Needs to be SATA (or non-SCSI) for ARM64 builds."
+}
 variable "vmware_disk_adapter_type" {
-  type    = string
-  default = null
+  type        = string
+  default     = "sata"
+  description = "Disk adapter type.  Needs to be SATA (PVSCSI, or non-SCSI) for ARM64 builds."
 }
 variable "vmware_guest_os_type" {
   type        = string
@@ -187,13 +200,13 @@ variable "vmware_tools_upload_path" {
 }
 variable "vmware_version" {
   type    = number
-  default = 15
+  default = 20
 }
 variable "vmware_vmx_data" {
-  type    = map(string)
+  type = map(string)
   default = {
-    "cpuid.coresPerSocket" = "1"
-    "ethernet0.pciSlotNumber"  = "32"
+    "cpuid.coresPerSocket"    = "1"
+    "ethernet0.pciSlotNumber" = "32"
   }
 }
 variable "vmware_vmx_remove_ethernet_interfaces" {

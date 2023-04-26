@@ -9,7 +9,7 @@ dpkg --list \
 echo "remove specific Linux kernels, such as linux-image-4.9.0-13-amd64 but keeps the current kernel and does not touch the virtual packages"
 dpkg --list \
     | awk '{ print $2 }' \
-    | grep 'linux-image-[234].*' \
+    | grep 'linux-image-[1-9].*' \
     | grep -v "$(uname -r)" \
     | xargs apt-get -y purge;
 
@@ -49,6 +49,10 @@ find /var/log -type f -exec truncate --size=0 {} \;
 
 echo "blank netplan machine-id (DUID) so machines get unique ID generated on boot"
 truncate -s 0 /etc/machine-id
+if test -f /var/lib/dbus/machine-id
+then
+  truncate -s 0 /var/lib/dbus/machine-id  # if not symlinked to "/etc/machine-id"
+fi
 
 echo "remove the contents of /tmp and /var/tmp"
 rm -rf /tmp/* /var/tmp/*

@@ -16,14 +16,15 @@ jobs:
           - centos-stream-9
           - debian-10
           - debian-11
+          - debian-12
           - fedora-37
           - fedora-38
           - freebsd-12
           - freebsd-13
           - opensuse-leap-15
-          - oraclelinux-7
-          - oraclelinux-8
-          - oraclelinux-9
+          - oracle-7
+          - oracle-8
+          - oracle-9
           - rockylinux-8
           - rockylinux-9
           - scientificlinux-7
@@ -34,6 +35,7 @@ jobs:
           - ubuntu-20.04
           - ubuntu-22.04
           - ubuntu-22.10
+          - ubuntu-23.04
 #          - windows-10
 #          - windows-11
 #          - windows-2012r2
@@ -50,10 +52,10 @@ jobs:
         run: Invoke-RestMethod -Method Head -Verbose -Uri $(Get-Content os_pkrvars/$('${{ matrix.os }}'.split('-')[0])/${{ matrix.os }}-x86_64.pkrvars.hcl | ConvertFrom-StringData).iso_url.Trim('"')
       - name: Download virtio-win.iso
         run: curl https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.229-1/virtio-win.iso -o packer_templates/win_answer_files/virtio-win.iso
-      - name: Setup Packer
-        uses: hashicorp/setup-packer@main
-        with:
-          version: latest
+#      - name: Setup Packer
+#        uses: hashicorp/setup-packer@main
+#        with:
+#          version: latest
       - name: Packer Init
         env:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

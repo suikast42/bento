@@ -276,6 +276,7 @@ source "vmware-iso" "vm" {
   cpus             = var.cpus
   communicator     = local.communicator
   disk_size        = var.disk_size
+  disk_type_id     = var.disk_type_id
   floppy_files     = local.floppy_files
   headless         = var.headless
   http_directory   = local.http_directory

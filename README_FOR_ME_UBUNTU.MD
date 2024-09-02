@@ -20,9 +20,9 @@ Open powershell
  $env:TMPDIR="$env:C:\IDE\golang\tmp"
  $env:PACKER_LOG=1
  packer init -upgrade ./packer_templates
- packer build -only="vmware-iso.vm" -var "vmware_version=15" -var-file="os_pkrvars/ubuntu/ubuntu-22.04-x86_64.pkrvars.hcl" ./packer_templates
+ packer build -only="vmware-iso.vm" -var-file="os_pkrvars/ubuntu/ubuntu-24.04-x86_64.pkrvars.hcl" ./packer_templates
  #With custom disk size and type
- packer build -only="vmware-iso.vm" -var "vmware_version=15" -var "disk_size=16384" -var="disk_type_id=0"   -var="disk_type_id=0"  -var-file="os_pkrvars/ubuntu/ubuntu-22.04-x86_64.pkrvars.hcl" ./packer_templates
+ packer build -only="vmware-iso.vm"  -var "disk_size=16384" -var="disk_type_id=0"   -var="disk_type_id=0"  -var-file="os_pkrvars/ubuntu/ubuntu-24.04-x86_64.pkrvars.hcl" ./packer_templates
 ```
 
 4. change to <project basedir>/build  and rename the box as amova-ubuntu-baseimg-<amova version>.<disk size>.vmwarevm

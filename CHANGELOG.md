@@ -2,67 +2,146 @@
 
 ## Working Builds
 
-***Note:**
+*__Note:__
 Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 
-| os | hyperv<br>x86_64 | parallels<br>x86_64 | parallels<br>aarch64 | qemu<br>x86_64 | qemu<br>aarch64 | virtualbox<br>x86_64 | virtualbox<br>aarch64 | vmware<br>x86_64 | vmware<br>aarch64 |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| almalinux-8 |  | x |  | x |  | x |  | x |  |
-| almalinux-9 |  | x | x |  |  | x |  | x | x |
-| amazonlinux-2 |  |  |  |  |  | x |  |  |  |
-| amazonlinux-2023 |  |  |  |  |  | x |  |  |  |
-| centos-stream-9 |  | x |  |  |  | x |  | x | x |
-| debian-11 |  | x | x |  |  | x |  | x |  |
-| debian-12 |  | x | x |  |  | x |  | x | x |
-| fedora-39 |  | x | x | x |  | x |  | x | x |
-| fedora-40 |  | x |  | x |  | x |  | x | x |
-| freebsd-13 |  |  |  |  |  | x |  | x | x |
-| freebsd-14 |  |  |  |  |  |  |  |  |  |
-| macos |  |  | x |  |  |  |  |  |  |
-| opensuse-leap-15 |  |  |  | x |  | x |  | x | x |
-| oraclelinux-8 |  |  |  |  |  | x |  | x |  |
-| oraclelinux-9 |  | x | x |  |  | x |  | x | x |
-| rhel-8 | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed |
-| rhel-9 | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed | license<br>needed |
-| rockylinux-8 |  | x |  | x |  | x |  | x |  |
-| rockylinux-9 |  | x |  |  |  | x |  | x | x |
-| sles-12 | license<br>needed | license<br>needed | na | license<br>needed | na | license<br>needed | na | license<br>needed | na |
-| sles-15 | license<br>needed | license<br>needed | na | license<br>needed | na | license<br>needed | na | license<br>needed | na |
-| solaris-11 | license<br>needed | license<br>needed | na | license<br>needed | na | license<br>needed | na | license<br>needed | na |
-| ubuntu-20.04 |  |  | x |  |  | x |  | x | x |
-| ubuntu-22.04 |  | x |  |  |  | x |  |  |  |
-| ubuntu-24.04 |  | x | x | x |  | x |  | x | x |
-| windows-10 |  |  | na |  | na | x | na |  | na |
-| windows-11 |  | x | x |  |  | x |  | x |  |
-| windows-2016 |  | x | na |  | na | x | na | x | na |
-| windows-2019 |  | x | na |  | na | x | na | x | na |
-| windows-2022 |  | x | na |  | na | x | na |  | na |
+## Builds for version 202510.26.0
+
+| os | virtualbox<br>x86_64 | virtualbox<br>aarch64 | vmware<br>x86_64 | vmware<br>aarch64 | parallels<br>x86_64 | parallels<br>aarch64 | utm<br>x86_64 | utm<br>aarch64 | qemu<br>x86_64 | qemu<br>aarch64 | hyperv<br>x86_64 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| almalinux-8 | x | na | x | na | x | na | x | na |  | na |  |
+| almalinux-9 | x | x | x | x | x | x | x | x |  |  |  |
+| almalinux-10 | x | x | x | x | x | x | x | x |  |  |  |
+| amazonlinux-2023 | x |  |  |  |  |  |  |  |  |  |  |
+| centos-stream-9 | x | x | x | x | x | x | x | x |  |  |  |
+| centos-stream-10 | x | x | x | x |  | x | x | x |  |  |  |
+| debian-12 | x | x | x | x | x | x |  |  |  |  |  |
+| debian-13 | x | x | x | x | x | x |  |  |  |  |  |
+| fedora-41 | x | x | x | x | x | x | x | x |  |  |  |
+| fedora-42 | x | x | x | x | x | x | x | x |  |  |  |
+| freebsd-13 | x | x | x | x | x | x | x |  |  |  |  |
+| freebsd-14 | x | x | x | x | x | x | x | x |  |  |  |
+| macos-14 | na | na | na | na | na | x |  |  | na | na | na |
+| macos-15 | na | na | na | na | na | x |  |  | na | na | na |
+| opensuse-leap-15 | x | x | x | x | x | x |  |  |  |  |  |
+| opensuse-leap-16 | x | x | x | x | x | x | x | x |  |  |  |
+| oraclelinux-8 | x | na | x | na | x | na | x | na |  | na |  |
+| oraclelinux-9 | x | x | x | x | x | x | x | x |  |  |  |
+| oraclelinux-10 | x |  | x |  | x |  | x |  |  |  |  |
+| rockylinux-8 | x | na | x | na | x | na | x | na |  | na |  |
+| rockylinux-9 | x | x | x | x | x | x | x | x |  |  |  |
+| rockylinux-10 | x | x | x | x | x | x | x | x |  |  |  |
+| ubuntu-22.04 | x | x | x | x | x | x | x | x |  |  |  |
+| ubuntu-24.04 | x | x | x | x | x | x | x | x | x |  |  |
+| ubuntu-25.04 | x | x | x | x | x | x | x | x | x |  |  |
+| ubuntu-25.10 |  |  |  |  |  |  |  |  |  |  |  |
+| windows-11 | x | na | x |  | x | x | x | x |  |  |  |
+| windows-2016 | x | na | x | na | x | na | x | na |  | na |  |
+| windows-2019 | x | na | x | na | x | na | x | na |  | na |  |
+| windows-2022 | x | na | x | na | x | na | x | na |  | na |  |
+| windows-2025 | x | na | x | na | x | na | x | na |  | na |  |
 
 ### Todo
 
 - Fix failing builds
 - migrate from http directory for hosting files to cd_files in source templates
-  - This makes all builds compatible with hyper-v gen 2 which removes floppy disk capability
-  - Eliminates any potential networking issues
+   - This makes all builds compatible with hyper-v gen 2 which removes floppy disk capability
+   - Eliminates any potential networking issues with host firewalls
 - Update pipelines to only run on updated pkrvars files
-- Look into making all builds uefi default builds
 - Create CD pipeline to upload vagrant boxes after PR is merged
 - Create CD pipeline to build and upload new versions of vagrant boxes once every 3 months with the latest patches
 
-## [unreleased] (2024-05-23)
+## [unreleased] (2025-11-21)
 
-- Update almalinux 8 to 8.10
+## [v5.0.1] (2025-11-21)
+
+- Updated bento to use absolute paths for packer templates
+- Added Fedora 43 builds
+- Removed EOL Fedora 41 templates
+- Defaulting all sources to use uefi where possible
+- Defaulting all sources to use nvme primary disk where possible
+- Switched to new host-info packer plugin for host info detection
+
+## [v5.0.0] (2025-08-27)
+
+- Add UTM virtualization support <https://mac.getutm.app/>
+- Fix Win11 vbox guest os type for aarch64
+- Update qemu args for aarch64 on macos to properly boot linux vms
+- Fix workflows to remove vms on cancelled jobs
+- Set workflows that have restrictions on automating virtual provider install or arm hosts to use self hosted runners
+- Fix Oracle Linux 10 aarch64 install of gcc after newer kernel updates built on newer gcc version
+- Add check on linux scripts if reboot is needed otherwise move on
+- Added qemu guest tools install script for linux
+- Added utm provider to windows vagrant file template
+- Updated fedora ks file to enable firewall and set selinux to enforcing similar to a default install
+- Added provider specific boot command variables - if null falls back to boot_command variable
+- Consolidate kickstart files
+- Added macOS 26 builds
+- Updated Debian 13 to 13.1
+- Added OpenSUSE Leap 16 builds
+- Fix Debian libvirt build
+- Added Ubuntu 25.04 and 25.10 builds
+- Misc Ubuntu script fixes
+- update testing to move files to testing_passed and testing_failed directories
+- completed build now go to builds/build_complete directory
+- fix scripts reboot checks
+
+## [v4.2.0] (2025-08-10)
+
+- Removed amazonlinux 2 builds
+- Removed Ubuntu 20.04 builds
+- Removed OpenSUSE Leap 12 builds
+- Removed Debian 11 builds
+- Removed SLES 12 builds
+- Removed Ubuntu 24.10 builds
+- Removed Windows 10 builds
+- Removed Fedora 40 builds
+- Added CentOS Stream 10 builds
+- Added Debian 13 builds
+- Added SLES 15 Aarch64 template
+- Added Windows 2025 template
+- Update almalinux 8 to 8.11
 - Update rockylinux 8 to 8.10
 - Update oraclelinux 8 to 8.10
 - Update rhel 8 to 8.10
-- Update freebsd 14 to 14.1
+- Update almalinux 9 to 9.6
+- Update rockylinux 9 to 9.6
+- Update oraclelinux 9 to 9.6
+- Update rhel 9 to 9.6
+- Added almalinux 10 builds
+- Added rockylinux 10 builds
+- Added oraclelinux 10 builds
+- Added rhel 10 builds
+- Update freebsd 14 to 14.3
+- Update freebsd 13 to 13.5
+- Update debian 11 to 11.11
+- Update debian 12 to 12.11
+- Update MacOS 14 to 14.6.1
+- Update OpenSUSE Leap 15 to 15.6
+- Update SLES 15 to 15.7
+- Add macOS 15 at 15.6
+- Remove ask from --on-error flag options(it did nothing)
+- Switched most iso urls to boot images to shrink disk usage space and speed up downloads
+- Removed RHEL 7 ks.cfg file
+- Added RHEL 10 ks.cfg file
+- Fix Vbox 7.1.6+ VBoxManage and hardware config for Aarch64 builds
+- Consolidated and updated few post-processing scripts to clean up code
+- Added Packer variable for iso_target_path to default iso downloads to the local builds/iso directory
+- Updated windows scripts and order for better build performance
+- Fixed Windows 11 aarch64 builds - vbox 7.6.1 currently doesn't support Windows 11 aarch64
+- Enabled firewalld and selinux in rhel kickstart files to mimic more closely a default rhel install
+- Consolidated more scripts into common scripts
+- Updated common scripts and rearranged order for more reliable builds
+- add test pass or fail error to metadata for bento tests
+- Shorten vagrant cloud upload box short description to meet max 120 characters
+- make iso name have a portion of the hash for url string to make iso downloads unique when updated
 
 ## [v4.1.2] (2024-05-23)
 
 - Fix for hyper-v build option
 - Remove test-kitchen and kitchen-vagrant dependencies from gemspec to fix gem compile error on windows
-- Updated hyper-v builds to use github actions hosted runners
-- Updated VMware builds to use github actions hosted runners
+- Updated hyper-v builds to use GitHub actions hosted runners
+- Updated VMware builds to use GitHub actions hosted runners
 - Better handle bento uploads of slugs ending in 'latest'
 - Fix oraclelinux slug names
 - Update almalinux 9.3 to 9.4
@@ -220,8 +299,9 @@ Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 - Fix failing builds
 - Finish removal of deprecated chef-solo provider to powershell provider for windows
 - migrate from http directory for hosting files to cd_files in source templates
-  - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
-  - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+   - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
+   - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+
 - Update pipelines to only run on updated pkrvars files
 - Look into making all build uefi default builds
 - Create CD pipeline to upload vagrant boxes after PR is merged
@@ -245,14 +325,17 @@ Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 
 - Fix failing builds
 - Add more Virtualization providers to build pipelines
-  - vmware
-    - aarch64 - vmware plugin has issues with fusion 13
-  - virtualbox
-    - aarch64 - Vbox Beta support currently
+   - vmware
+      - aarch64 - vmware plugin has issues with fusion 13
+
+   - virtualbox
+      - aarch64 - Vbox Beta support currently
+
 - Finish removal of deprecated chef-solo provider to powershell provider for windows
 - migrate from http directory for hosting files to cd_files in source templates
-  - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
-  - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+   - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
+   - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+
 - Update pipelines to only run on updated pkrvars files
 - Create CD pipeline to upload vagrant boxes after PR is merged
 - Create CD pipeline to build and upload new versions of vagrant boxes once every 3 months with the latest patches
@@ -294,8 +377,9 @@ Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 - Add more Virtualization providers to build pipelines
 - Finish removal of deprecated chef-solo provider to powershell provider for windows
 - migrate from http directory for hosting files to cd_files in source templates
-  - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
-  - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+   - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
+   - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+
 - Update pipelines to only run on updated pkrvars files
 - Create CD pipeline to upload vagrant boxes after PR is merged
 - Create CD pipeline to build and upload new versions of vagrant boxes once every 3 months with the latest patches
@@ -373,8 +457,9 @@ Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 - Add more Virtualization providers to build pipelines
 - Finish removal of deprecated chef-solo provider to powershell provider for windows
 - migrate from http directory for hosting files to cd_files in source templates
-  - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
-  - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+   - This makes all builds compatable with hyper-v gen 2 which removes floppy disk capability
+   - This also makes things universal for Virtualbox 6.1 to 7.x due to latter requiring extra config for guests on NAT to be able to connect to host
+
 - Update pipelines to only run on updated pkrvars files
 - Create CD pipeline to upload vagrant boxes after PR is merged
 - Create CD pipeline to build and upload new versions of vagrant boxes once every 3 months with the latest patches
@@ -635,10 +720,10 @@ Markdown table generated at <https://www.tablesgenerator.com/markdown_tables#>
 - Suppress VMX whitelisting warning by removing interfaces at end of build
 - Use archive.ubuntu.com instead of US specific domain
 - Latest Tooling
-  - VirtualBox 5.1.24
-  - VMware Fusion 8.5.8
-  - Parallels 12.2.1
-  - Packer 1.0.3
+   - VirtualBox 5.1.24
+   - VMware Fusion 8.5.8
+   - Parallels 12.2.1
+   - Packer 1.0.3
 
 ## [2.3.7] (2017-07-03)
 
@@ -1375,4 +1460,4 @@ Please ensure that Virtualbox is at least 5.1.6 and Vagrant at least 1.8.6 befor
 - \[BENTO-2\] Update Ubuntu iso filenames, md5sums. [\#6](https://github.com/chef/bento/pull/6) ([torandu](https://github.com/torandu))
 - \[BENTO-4\] Updated centos 6.2 iso urls to use the vault.centos.org url [\#4](https://github.com/chef/bento/pull/4) ([cburyta](https://github.com/cburyta))
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* _This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)_

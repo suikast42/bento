@@ -40,6 +40,7 @@ variable "sources_enabled" {
   default = [
     "source.parallels-iso.vm",
     "source.qemu.vm",
+    "source.utm-iso.vm",
     "source.virtualbox-iso.vm",
     "source.vmware-iso.vm",
   ]
@@ -48,6 +49,11 @@ variable "sources_enabled" {
 
 # Source block provider specific variables
 # hyperv-iso
+variable "hyperv_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "hyperv_boot_wait" {
   type    = string
   default = null
@@ -62,7 +68,7 @@ variable "hyperv_enable_secure_boot" {
 }
 variable "hyperv_generation" {
   type        = number
-  default     = 2
+  default     = 1
   description = "Hyper-v generation version"
 }
 variable "hyperv_guest_additions_mode" {
@@ -75,6 +81,11 @@ variable "hyperv_switch_name" {
 }
 
 # parallels-ipsw
+variable "parallels-ipsw_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "parallels_host_interfaces" {
   type        = list(string)
   default     = null
@@ -90,6 +101,11 @@ variable "parallels_ipsw_checksum" {
   default     = null
   description = "Checksum of the IPSW file"
 }
+variable "parallels_ipsw_target_path" {
+  type        = string
+  default     = "build_dir_iso"
+  description = "Path to store the IPSW file. Null will use packer cache default or build_dir_iso will put it in the local build/iso directory."
+}
 variable "parallels_prlctl_post" {
   type        = list(list(string))
   default     = null
@@ -102,6 +118,11 @@ variable "http_content" {
 }
 
 # parallels-iso
+variable "parallels-iso_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "parallels_boot_wait" {
   type    = string
   default = null
@@ -137,28 +158,52 @@ variable "qemu_binary" {
   type    = string
   default = null
 }
+variable "qemu_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "qemu_boot_wait" {
   type    = string
   default = null
+}
+variable "qemu_cpu_model" {
+  type    = string
+  default = "host"
+}
+variable "qemu_disk_cache" {
+  type    = string
+  default = "unsafe"
+}
+variable "qemu_disk_compression" {
+  type    = bool
+  default = true
+}
+variable "qemu_disk_detect_zeroes" {
+  type    = string
+  default = "unmap"
+}
+variable "qemu_disk_discard" {
+  type    = string
+  default = "unmap"
+}
+variable "qemu_disk_interface" {
+  type    = string
+  default = "virtio"
 }
 variable "qemu_display" {
   type        = string
   default     = null
   description = "What QEMU -display option to use. Defaults to gtk, use none to not pass the -display option allowing QEMU to choose the default"
 }
-variable "qemu_use_default_display" {
-  type        = bool
-  default     = null
-  description = "If true, do not pass a -display option to qemu, allowing it to choose the default"
-}
 variable "qemu_disk_image" {
   type        = bool
-  default     = null
+  default     = false
   description = "Whether iso_url is a bootable qcow2 disk image"
 }
 variable "qemu_efi_boot" {
   type        = bool
-  default     = false
+  default     = null
   description = "Enable EFI boot"
 }
 variable "qemu_efi_firmware_code" {
@@ -173,7 +218,7 @@ variable "qemu_efi_firmware_vars" {
 }
 variable "qemu_efi_drop_efivars" {
   type        = bool
-  default     = false
+  default     = null
   description = "Drop EFI vars"
 }
 variable "qemu_format" {
@@ -189,14 +234,131 @@ variable "qemu_machine_type" {
   type    = string
   default = null
 }
+variable "qemu_net_device" {
+  type    = string
+  default = "virtio-net-pci"
+}
 variable "qemuargs" {
   type    = list(list(string))
   default = null
 }
+variable "qemu_use_default_display" {
+  type    = bool
+  default = null
+}
+variable "qemu_use_pflash" {
+  type    = bool
+  default = true
+}
+
+# utm-iso
+variable "utm_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
+variable "utm_boot_nopause" {
+  type        = bool
+  default     = true
+  description = "If true, the build process will not pause to confirm successful boot."
+}
+variable "utm_boot_wait" {
+  type    = string
+  default = null
+}
+variable "utm_disable_vnc" {
+  type    = bool
+  default = null
+}
+variable "utm_display_hardware_type" {
+  type    = string
+  default = null
+}
+variable "utm_display_nopause" {
+  type        = bool
+  default     = true
+  description = "If true, the build process will not pause to add display."
+}
+variable "utm_export_nopause" {
+  type        = bool
+  default     = true
+  description = "If true, the build process will not pause to allow pre-export steps."
+}
+variable "utm_guest_additions_mode" {
+  type    = string
+  default = null
+}
+variable "utm_guest_additions_path" {
+  type    = string
+  default = null
+}
+variable "utm_guest_additions_interface" {
+  type    = string
+  default = "usb"
+}
+variable "utm_guest_additions_url" {
+  type    = string
+  default = null
+}
+variable "utm_guest_additions_sha256" {
+  type    = string
+  default = null
+}
+variable "utm_guest_additions_target_path" {
+  type        = string
+  default     = null
+  description = "Target path for guest additions iso to be downloaded to"
+}
+variable "utm_hard_drive_interface" {
+  type    = string
+  default = "nvme"
+}
+variable "utm_hypervisor" {
+  type    = bool
+  default = true
+}
+variable "utm_iso_interface" {
+  type    = string
+  default = "usb"
+}
+variable "utm_uefi_boot" {
+  type    = bool
+  default = true
+}
+variable "utm_vm_arch" {
+  type    = string
+  default = null
+}
+variable "utm_vm_backend" {
+  type    = string
+  default = null
+}
+variable "utm_vm_icon" {
+  type    = string
+  default = null
+}
 
 # virtualbox-iso
+variable "vbox_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "vbox_boot_wait" {
   type    = string
+  default = null
+}
+variable "vbox_chipset" {
+  type    = string
+  default = null
+}
+variable "vbox_firmware" {
+  type        = string
+  default     = "efi"
+  description = "Firmware type, takes bios or efi"
+}
+variable "vbox_gfx_accelerate_3d" {
+  type    = bool
   default = null
 }
 variable "vbox_gfx_controller" {
@@ -209,7 +371,7 @@ variable "vbox_gfx_vram_size" {
 }
 variable "vbox_guest_additions_interface" {
   type    = string
-  default = "sata"
+  default = null
 }
 variable "vbox_guest_additions_mode" {
   type    = string
@@ -226,28 +388,36 @@ variable "vbox_guest_os_type" {
 }
 variable "vbox_hard_drive_interface" {
   type    = string
-  default = "sata"
+  default = null
 }
 variable "vbox_iso_interface" {
   type    = string
-  default = "sata"
+  default = null
 }
 variable "vboxmanage" {
-  type = list(list(string))
-  default = [
-    [
-      "modifyvm",
-      "{{.Name}}",
-      "--audio",
-      "none",
-      "--nat-localhostreachable1",
-      "on",
-    ]
-  ]
+  type    = list(list(string))
+  default = null
+}
+variable "vbox_nested_virt" {
+  type    = bool
+  default = null
+}
+variable "vbox_nic_type" {
+  type    = string
+  default = null
 }
 variable "virtualbox_version_file" {
   type    = string
   default = ".vbox_version"
+}
+variable "vbox_rtc_time_base" {
+  type        = string
+  default     = "UTC"
+  description = "RTC time base"
+}
+variable "vbox_usb" {
+  type    = bool
+  default = false
 }
 
 # virtualbox-ovf
@@ -263,6 +433,11 @@ variable "vbox_checksum" {
 }
 
 # vmware-iso
+variable "vmware_boot_command" {
+  type        = list(string)
+  default     = null
+  description = "Commands to pass to gui session to initiate automated install"
+}
 variable "vmware_boot_wait" {
   type    = string
   default = null
@@ -272,10 +447,20 @@ variable "vmware_cdrom_adapter_type" {
   default     = "sata"
   description = "CDROM adapter type.  Needs to be SATA (or non-SCSI) for ARM64 builds."
 }
+variable "vmware_cores" {
+  type        = number
+  default     = 2
+  description = "The number of virtual CPU cores per socket for the virtual machine"
+}
 variable "vmware_disk_adapter_type" {
   type        = string
-  default     = "sata"
-  description = "Disk adapter type.  Needs to be SATA (PVSCSI, or non-SCSI) for ARM64 builds."
+  default     = "nvme"
+  description = "The adapter type for additional virtual disk(s). Available options are ide, sata, nvme, or scsi."
+}
+variable "vmware_firmware" {
+  type        = string
+  default     = "efi"
+  description = "The firmware type for the virtual machine. Allowed values are bios, efi, and efi-secure (for secure boot). Defaults to the recommended firmware type for the guest operating system"
 }
 variable "vmware_guest_os_type" {
   type        = string
@@ -295,30 +480,29 @@ variable "vmware_version" {
   default = 21
 }
 variable "vmware_vmx_data" {
-  type = map(string)
-  default = {
-    # "firmware"                = "efi"
-    "cpuid.coresPerSocket"    = "2"
-    "ethernet0.pciSlotNumber" = "32"
-    "svga.autodetect"         = true
-    "usb_xhci.present"        = true
-  }
+  type    = map(string)
+  default = null
 }
 variable "vmware_vmx_remove_ethernet_interfaces" {
   type    = bool
   default = true
 }
-variable "vmware_enable_usb" {
-  type    = bool
-  default = true
+variable "vmware_usb" {
+  type        = bool
+  default     = false
+  description = "Enable the USB 2.0 controllers for the virtual machine"
 }
 variable "vmware_network_adapter_type" {
   type    = string
-  default = "e1000e"
+  default = null
 }
 variable "vmware_network" {
   type    = string
   default = "nat"
+}
+variable "vmware_vnc_disable_password" {
+  type    = bool
+  default = true
 }
 
 # Source block common variables
@@ -331,9 +515,18 @@ variable "default_boot_wait" {
   type    = string
   default = null
 }
+variable "cd_content" {
+  type        = map(string)
+  default     = null
+  description = "Content to be served by the cdrom"
+}
 variable "cd_files" {
   type    = list(string)
   default = null
+}
+variable "cd_label" {
+  type    = string
+  default = "cidata"
 }
 variable "cpus" {
   type    = number
@@ -345,7 +538,7 @@ variable "communicator" {
 }
 variable "disk_size" {
   type    = number
-  default = 65536
+  default = null
 }
 variable "disk_type_id" {
   type    = number
@@ -369,6 +562,11 @@ variable "iso_checksum" {
   type        = string
   default     = null
   description = "ISO download checksum"
+}
+variable "iso_target_path" {
+  type        = string
+  default     = "build_dir_iso"
+  description = "Path to store the ISO file. Null will use packer cache default or build_dir_iso will put it in the local build/iso directory."
 }
 variable "iso_url" {
   type        = string
@@ -413,7 +611,7 @@ variable "winrm_password" {
 }
 variable "winrm_timeout" {
   type    = string
-  default = "60m"
+  default = "30m"
 }
 variable "winrm_username" {
   type    = string

@@ -2,6 +2,9 @@
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 env:
   PACKER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # PACKER_LOG: 1
@@ -15,21 +18,29 @@ jobs:
         os:
           - almalinux-8
           - almalinux-9
+          - almalinux-10
           - centos-stream-9
-          - debian-11
+          - centos-stream-10
           - debian-12
-          - fedora-39
-          - fedora-40
+          - debian-13
+          - fedora-42
+          - fedora-43
           - freebsd-13
           - freebsd-14
+          - freebsd-15
           - opensuse-leap-15
+          - opensuse-leap-16
           - oraclelinux-8
           - oraclelinux-9
+          - oraclelinux-10
           - rockylinux-8
           - rockylinux-9
-          - ubuntu-20.04
+          - rockylinux-10
           - ubuntu-22.04
           - ubuntu-24.04
+          - ubuntu-25.04
+          - ubuntu-25.10
+          - ubuntu-26.04
         provider:
           - virtualbox-iso
     steps:
@@ -42,11 +53,9 @@ jobs:
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
           echo "deb [signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
           sudo apt-get update
-          sudo apt-get install -y software-properties-common vagrant virtualbox-7.0
+          sudo apt-get install -y software-properties-common vagrant virtualbox-7.2
       - name: Install Chef
         uses: actionshub/chef-install@3.0.0
-        with:
-          version: 24.2.1058
       - name: Setup Packer
         uses: hashicorp/setup-packer@main
         with:
@@ -60,24 +69,26 @@ jobs:
         run: |
           rm -rf builds
           sudo mkdir -p /mnt/builds/iso
+          sudo mkdir -p /mnt/builds/build_complete
           sudo chmod -R 777 /mnt/builds
           sudo ln -s /mnt/builds ./
           eval "$(chef shell-init bash)"
           export LOGNAME=$USER
           bento build -o ${{ matrix.provider }}.vm os_pkrvars/$(echo ${{ matrix.os }} | cut -d "-" -f 1)/"${{ matrix.os }}-x86_64.pkrvars.hcl"
-          ls -alh builds/
-          cat builds/${{ matrix.os }}*-x86_64._metadata.json
-      - name: Upload build artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: "${{ matrix.os }}-virtualbox-x86_64"
-          path: |
-            builds/*.box
-            builds/*.json
-          retention-days: 10
-          compression-level: 0 # no compression
+          ls -alh builds/build_complete/
+          cat builds/build_complete/${{ matrix.os }}*-x86_64._metadata.json
       - name: Bento Test
         run: |
           eval "$(chef shell-init bash)"
           export LOGNAME=$USER
           bento test
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ matrix.os }}-virtualbox-x86_64"
+          path: |
+            builds/testing_passed/x86_64/*.box
+            builds/testing_passed/x86_64/*.json
+          overwrite: true
+          retention-days: 10
+          compression-level: 0 # no compression

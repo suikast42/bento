@@ -1,9 +1,12 @@
-os_name                 = "macos"
-os_version              = "14.4.1"
-os_arch                 = "aarch64"
-parallels_ipsw_url      = "https://updates.cdn-apple.com/2024WinterFCS/fullrestores/052-77579/4569734E-120C-4F31-AD08-FC1FF825D059/UniversalMac_14.4.1_23E224_Restore.ipsw"
-parallels_ipsw_checksum = "78b39816521a6eeaf29221a4e59e83dae98ef5f9e8e718b846f8faab540a48c1"
+os_name    = "macos"
+os_version = "14.8.2"
+os_arch    = "aarch64"
+# Download urls cn be foud at https://ipsw.me/VirtualMac2,1
+parallels_ipsw_url      = "https://updates.cdn-apple.com/2024SummerFCS/fullrestores/062-52859/932E0A8F-6644-4759-82DA-F8FA8DEA806A/UniversalMac_14.6.1_23G93_Restore.ipsw"
+parallels_ipsw_checksum = "e387251e63387150ba76cf784bdb97d2016e5d43c6f809c90a115eb067a097b8"
+utm_vm_icon             = "mac"
 sources_enabled         = ["source.parallels-ipsw.vm"]
+default_boot_wait       = "15s"
 boot_command = [
   # hello, hola, bonjour, etc.
   "<wait><spacebar><wait5s>",
@@ -43,6 +46,17 @@ boot_command = [
   "<tab><wait><spacebar><wait><leftShiftOn><tab><leftShiftOff><wait><spacebar><wait5s>",
   # Choose Your Look
   "<leftShiftOn><tab><leftShiftOff><wait><spacebar><wait30s>",
+  # Open Terminal
+  "<spacebar><wait><leftSuperOn><spacebar><leftSuperOff><wait>terminal<wait><enter><wait5s>",
+  # Add vagrant user to sudoers
+  "echo 'vagrant' | sudo -S sh -c 'echo \"vagrant ALL=(ALL) NOPASSWD: ALL\" > /etc/sudoers.d/vagrant'<wait><enter><wait5s>",
+  # Set Auto login for vagrant
+  "sudo sysadminctl -autologin set -userName vagrant -password vagrant<wait><enter><wait5s>",
+  # Disable screen lock
+  "sudo sysadminctl -screenLock off -password vagrant<wait><enter><wait5s>",
+  # Close terminal
+  "exit<enter><wait5s>",
+  "<leftSuperOn>q<leftSuperOff>",
   # Enable keyboard navigation
   "<leftCtrlOn><f7><leftCtrlOff><wait2s>",
   # Open System Settings
@@ -56,18 +70,4 @@ boot_command = [
   "<leftSuperOn>q<leftSuperOff><wait5s>",
   # Disable keyboard navigation
   "<leftCtrlOn><f7><leftCtrlOff><wait2s>",
-  # Open Terminal
-  "<leftSuperOn><spacebar><leftSuperOff><wait>terminal<wait><enter><wait5s>",
-  # Add vagrant user to sudoers
-  "echo 'vagrant' | sudo -S sh -c 'echo \"vagrant ALL=(ALL) NOPASSWD: ALL\" > /etc/sudoers.d/vagrant'<wait><enter><wait5s>",
-  # Set Auto login for vagrant
-  "sudo sysadminctl -autologin set -userName vagrant -password vagrant<wait><enter><wait5s>",
-  # Disable screen lock
-  "sudo sysadminctl -screenLock off -password vagrant<wait><enter><wait5s>",
-  # Install Parallels Tools
-  "sudo installer -pkg /Volumes/Parallels\\ Tools/Install.app/Contents/Resources/Install.mpkg -target /<wait><enter><wait5s>",
-  # Reboot
-  "sudo shutdown -r +15s<wait><enter><wait5s>",
-  "exit<enter><wait5s>",
-  "<leftSuperOn>q<leftSuperOff>"
 ]

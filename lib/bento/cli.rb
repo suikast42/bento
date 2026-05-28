@@ -85,15 +85,15 @@ class Options
             options.metadata_only = opt
           end
 
-          opts.on('--on-error OPT', '[cleanup|abort|ask|run-cleanup-provisioner] If the build fails do: clean up (default), abort, ask, or run-cleanup-provisioner.') do |opt|
+          opts.on('--on-error OPT', '[cleanup|abort|run-cleanup-provisioner] If the build fails do: clean up (default), abort, or run-cleanup-provisioner.') do |opt|
             options.on_error = opt
           end
 
-          opts.on('--vars VARS', 'Comma seperated list of variable names equal values (ex: boot_wait="2s",ssh_timeout="5s")') do |opt|
+          opts.on('--vars VARS', 'Comma separated list of variable names equal values (ex: boot_wait="2s",ssh_timeout="5s")') do |opt|
             options.vars = opt
           end
 
-          opts.on('--var_files VAR_FILES', 'Comma seperated list of pkrvar.hcl files to include in the builds (ex: /path/to/var_file.pkrvars.hcl,/path/to/next/var_file2.pkrvars.hcl)') do |opt|
+          opts.on('--var_files VAR_FILES', 'Comma separated list of pkrvar.hcl files to include in the builds (ex: /path/to/var_file.pkrvars.hcl,/path/to/next/var_file2.pkrvars.hcl)') do |opt|
             options.var_files = opt
           end
 
@@ -165,7 +165,7 @@ class Options
             options.no_shared = opt
           end
 
-          opts.on('-p', '--provisioner PROVISIONER', 'Use a specfic provisioner') do |opt|
+          opts.on('-p', '--provisioner PROVISIONER', 'Use a specific provisioner') do |opt|
             options.provisioner = opt
           end
         end,

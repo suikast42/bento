@@ -12,9 +12,9 @@
 - Changed  ```headless``` from true to false
 
 # Build centos image
-Disable Windows Firewall 
+Disable Windows Firewall
 1. cd <project_dir>
-Open powershell
+   Open powershell
 ```shell
  $env:PACKER_CACHE_DIR="$env:userprofile\VMImages\VMIsos\ubuntu"
  $env:TMPDIR="$env:C:\IDE\golang\tmp"
@@ -22,13 +22,12 @@ Open powershell
  packer init -upgrade ./packer_templates
  packer build -only="vmware-iso.vm" -var-file="os_pkrvars/ubuntu/ubuntu-26.04-x86_64.pkrvars.hcl" ./packer_templates
  #With custom disk size and type
- packer build -only="vmware-iso.vm"  -var "disk_size=16384" -var="disk_type_id=0"   -var="disk_type_id=0"  -var-file="os_pkrvars/ubuntu/ubuntu-26.04-x86_64.pkrvars.hcl" ./packer_templates
+ packer build -only="vmware-iso.vm"  -var "disk_size=65536" -var="disk_type_id=0"   -var="disk_type_id=0"  -var-file="os_pkrvars/ubuntu/ubuntu-26.04-x86_64.pkrvars.hcl" ./packer_templates
 ```
 
-4. change to <project basedir>/build  and rename the box as amova-ubuntu-baseimg-<amova version>.<disk size>.vmwarevm
-   for example amova-ubuntu-baseimg-1.0.0.16.vmwarevm
-5. 
+4. change to <project basedir>/builds/build_complete
+5.
 ```shell
-openssl sha1  amova-ubuntu-baseimg-1.0.0.16.vmwarevm
+openssl sha1  <box_file>.box
 ```
-6. Add the version and sha to metadata.json and upload it
+6. Upload it to vagrant cloud
